@@ -2,7 +2,7 @@
 
 # Procédure de déploiement
 
-## Prérequis
+## 1 Prérequis
 
 - Node.js 24 LTS
 - pnpm 11
@@ -11,7 +11,7 @@
 - dossier projet configuré comme répertoire racine du projet Vercel
 fichier .nvmrc fixe node.js 24 pour éviter environnement implicite.
 
-## installation locale
+## 2 installation locale
 
 ```text
 pnpm install
@@ -24,7 +24,7 @@ node --check api/index.js && node --check tests/api.test.js
 API tests passed
 ```
 
-## déploiement vercel
+## 3 déploiement vercel
 
 depuis la racine du projet :
  ```
@@ -41,13 +41,13 @@ ajouter les clés qui sont dans .env.example et configurer la variable d'environ
 
 ensuite déployer avec `vercel`, ça permet de déployer la version en production
 
-### déployer la version de dev
+### 3.1 déployer la version de dev
 
 - créer une branche develop `git checkout -b develop` 
 - déployer `vercel`
 - configurer les variables d'environnement pour la version preview
 
-## mise à jour 
+## 4 mise à jour 
 
 Pour publier une nouvelle version : 
 passer sur la branche develop
@@ -56,7 +56,20 @@ mettre à jour le projet
 mettre à jour les tests si le comportement change
 lancer npm run check et npm test
 créer un commit explicite
-déployer la preview : `git push -u origin develop`
+déployer la preview : `vercel`
+vérifier les routes
+publier en production 
+
+
+### 4.1 Publier en production
+
+fusionner develop avec main
+lancer `vercel --prod`
+
+## 5 retour arrière
+
+en cas d'echec, sélctionner le déploiement précedent dans l'historique Vercel et le promouvoir en production
+
 
 
 ## Arborescence 

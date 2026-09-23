@@ -4,7 +4,7 @@ const cors = require('cors');
 const curiosities = require('./data/curiosities.json');
 
 const app = express();
-const version = process.env.LANTERNE_API_VERSION || '1.0.0';
+const version = process.env.LANTERNE_API_VERSION || '1.0.1';
 const environment = process.env.LANTERNE_ENV || 'development';
 const allowedOrigin = process.env.ALLOWED_ORIGIN || '*';
 

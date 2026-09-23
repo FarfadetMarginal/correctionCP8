@@ -26,3 +26,6 @@ L’API est disponible sur `http://localhost:3000`.
 - `GET /api/curiosities/:slug`
 
 Le déploiement cible Vercel. Les variables d’environnement sont listées dans `.env.example`. Aucune donnée sensible ne doit être ajoutée au dépôt.
+
+Production : Url de prod vercel
+
