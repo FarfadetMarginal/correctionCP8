@@ -20,5 +20,3 @@ npm test
 - screenshots
 - sorties de commandes
 - dates, URL, version de l'API testée
-
-Les tokens, variables et
