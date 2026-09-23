@@ -1,5 +1,64 @@
 # Audit du projet
 
+# Procédure de déploiement
+
+## Prérequis
+
+- Node.js 24 LTS
+- pnpm 11
+- compte et repo GitHub
+- compte vercel
+- dossier projet configuré comme répertoire racine du projet Vercel
+fichier .nvmrc fixe node.js 24 pour éviter environnement implicite.
+
+## installation locale
+
+```text
+pnpm install
+pnpm run check
+pnpm test
+```
+résulats attendus : 
+```text
+node --check api/index.js && node --check tests/api.test.js
+API tests passed
+```
+
+## déploiement vercel
+
+depuis la racine du projet :
+ ```
+vercel link
+create new project
+nom du projet
+connect this git... : y
+code directory : default (entrée)
+customize settings? : n
+ ```
+
+On configure les variables d'environnement sur Vercel. menu `environment variables` → `add envorinment variables` → `config`
+ajouter les clés qui sont dans .env.example et configurer la variable d'environnement en fonction de l'environnement
+
+ensuite déployer avec `vercel`, ça permet de déployer la version en production
+
+### déployer la version de dev
+
+- créer une branche develop `git checkout -b develop` 
+- déployer `vercel`
+- configurer les variables d'environnement pour la version preview
+
+## mise à jour 
+
+Pour publier une nouvelle version : 
+passer sur la branche develop
+`git switch develop`
+mettre à jour le projet
+mettre à jour les tests si le comportement change
+lancer npm run check et npm test
+créer un commit explicite
+déployer la preview : `git push -u origin develop`
+
+
 ## Arborescence 
 
 ```
@@ -58,10 +117,6 @@ node tests/api.test.js
 ## Variables d'environnement
 
 On peut les modifier directement sur Vercel, car elle ne doivent pas être publique.
-
-## Procédure de déploiement
-- Création repository GitHub
-- Vercel → Add New → Project → trouver notre repo GitHub → import
 
 ## La mise à jour et le retour en arrière
 
